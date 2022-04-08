@@ -36,7 +36,7 @@ const Navbar = () => {
                                 <MenuLink  to="/">Home</MenuLink>
                             </MenuItem>
                             <MenuItem>
-                                <MenuLink  to="/about">About</MenuLink>
+                                <MenuLink  to="/">About</MenuLink>
                             </MenuItem>
                           
                             <MenuItemBtn>
@@ -55,7 +55,7 @@ const Navbar = () => {
                               
                             <MenuItemBtn>
                                 {/* {button?( */}
-                                    <MenuLinkBtn to="/login+">
+                                    <MenuLinkBtn to="/login">
                                         <Button primary>Login</Button>
                                     </MenuLinkBtn>
                                   

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import "./css/register.css";
 
 const RegisterForm = () => {
     const history = useHistory();
 
     const [userRegistration, setUserRegistration] = useState({
+       name: "",
         username: "",
         email: "",
         password: "",
@@ -13,6 +15,7 @@ const RegisterForm = () => {
     });
     const [record, setRecord] = useState([]);
     const [validation, setValidation] = useState({
+        name:"",
         username: "",
         email: "",
         password: "",
@@ -54,19 +57,26 @@ const RegisterForm = () => {
         }
         errors.email = "";
 
-        //contact number Validation
         const regex = /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/i;
-        if (!userRegistration.contact.trim()) {
-            errors.contact = "contact is required";
+        if (!userRegistration.name.trim()) {
+            errors.name = "name is required";
             return true;
-        } else if (
-            !userRegistration.contact.match(regex) ||
-            userRegistration.contact.length < 9
-        ) {
-            errors.contact = "Please Enter Valid Contact Number";
-            return true;
-        }
-        errors.contact = "";
+        } 
+        errors.name = "";
+
+        //contact number Validation
+        // const regex = /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/i;
+        // if (!userRegistration.contact.trim()) {
+        //     errors.contact = "contact is required";
+        //     return true;
+        // } else if (
+        //     !userRegistration.contact.match(regex) ||
+        //     userRegistration.contact.length < 9
+        // ) {
+        //     errors.contact = "Please Enter Valid Contact Number";
+        //     return true;
+        // }
+        // errors.contact = "";
 
         //password validation
         const password = userRegistration.password;
@@ -85,7 +95,6 @@ const RegisterForm = () => {
           return true;
         } 
         errors.password = "";
-
         setValidation(errors);
     };
 
@@ -101,7 +110,20 @@ const RegisterForm = () => {
                     password: "",
                     contact: "",
                 });
-                localStorage.setItem("RegisterUser", JSON.stringify(userRegistration));
+                axios
+                .post(`http://127.0.0.1:8000/api/auth/signUp`,userRegistration)
+                .then((response) => {
+                    console.log(response);
+                    if (response.data.token) {
+                        localStorage.setItem("RegisterUser", JSON.stringify(response.data));
+                        setUserRegistration({
+                            username: "",
+                            email: "",
+                            password: "",
+                            contact: "",
+                        });
+                        }
+                    });
                 history.push('/about1');
         }
     };
@@ -116,12 +138,25 @@ const RegisterForm = () => {
             <div className="login-container">
                 <form name="userRegistrationForm" className="form-login" onSubmit={handleSubmit}>
                     <h3 className="login-nav">Registration page</h3>
-                    <h3 name="allError" className="login-nav">
-                        {validation.allError && <p>{validation.allError}</p>}
-                    </h3>
+                    <div>
+                        <lable htmlFor="name" className="login__label">
+                           <h4>Name:</h4> 
+                        </lable>
+                        <input type="text"
+                            className="login__input"
+                            value={userRegistration.name}
+                            onChange={handleInput}
+                            name="name"
+                            id="name"
+                            autoComplete="off"
+                        />
+                        <div className="errorMsg">
+                            {validation.name && <p>{validation.name}</p>}
+                        </div>
+                    </div>
                     <div>
                         <lable htmlFor="username" className="login__label">
-                            UserName:
+                           <h4>UserName:</h4> 
                         </lable>
                         <input type="text" className="login__input" value={userRegistration.username} 
                             onChange={handleInput}
@@ -135,7 +170,7 @@ const RegisterForm = () => {
                     </div>
                     <div>
                         <lable htmlFor="email" className="login__label">
-                            Email:
+                          <h4>Email:</h4>  
                         </lable>
                         <input type="email" className="login__input" value={userRegistration.email}
                             onChange={handleInput}
@@ -147,7 +182,7 @@ const RegisterForm = () => {
                             {validation.email && <p>{validation.email}</p>}
                         </div>
                     </div>
-                    <div>
+                    {/* <div>
                         <lable htmlFor="contact" className="login__label">
                             Contact no:
                         </lable>
@@ -162,10 +197,10 @@ const RegisterForm = () => {
                         <div className="errorMsg">
                             {validation.contact && <p>{validation.contact}</p>}
                         </div>
-                    </div>
+                    </div> */}
                     <div>
                         <lable htmlFor="password" className="login__label">
-                            Password:
+                           <h4>Password:</h4> 
                         </lable>
                         <input
                             type="password"
@@ -211,7 +246,7 @@ const RegisterForm = () => {
                         Submit
                     </button>
                     <p className="login__label--checkbox">
-                        Already Registered? <a href="login">Sign In</a>
+                       <h4>Already Registered? <a href="login">Sign In</a></h4> 
                     </p>
                 </form>
             </div>

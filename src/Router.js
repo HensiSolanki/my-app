@@ -17,6 +17,7 @@ import LoginForm from './component/forms/LoginForm';
 import Layout from './component/Layout';
 import { PrivateRoute } from './utils/PrivateRoute';
 import Welcome from './component/Welcome';
+import GetApi from './pages/GetApi';
 
 export default function Routers() {
   const [name, setName] = useState("Hensi");
@@ -47,6 +48,8 @@ export default function Routers() {
               <PrivateRoute exact path="/map" component={Map}/> 
               <PrivateRoute exact path="/purecomponent" component={PureComponent}/>
               <PrivateRoute exact path="/usememo" component={UseMemo}/>
+              <PrivateRoute exact path="/getapi" component={GetApi}/>
+
               <Route path='*' exact={true} />
             </Switch>
           </Layout>

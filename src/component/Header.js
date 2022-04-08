@@ -9,8 +9,8 @@
 
 
 //import useState hook to create menu collapse state
-import React, { useState } from "react";
-
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom';
 import { Link, useLocation } from 'react-router-dom';
 
 //import react pro sidebar components
@@ -36,6 +36,7 @@ import "./Header.css";
 
 
 const Header = (props) => {
+      const history = useHistory();
       const location = useLocation();
       // console.log("Test", location.pathname);
     // const { location } = props;
@@ -45,6 +46,11 @@ const Header = (props) => {
   const menuIconClick = () => {
     //condition checking to change state from true to false and vice versa
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
+  };
+  const logout = () => {
+    // console.log("logout");
+    localStorage.removeItem('LoginUser');
+    history.push('/');
   };
 
   return (
@@ -82,12 +88,13 @@ const Header = (props) => {
               <MenuItem icon={<RiPencilLine />} active={ location.pathname === "/map"} ><Link to="/map">Map Method</Link></MenuItem>
               <MenuItem icon={<FaRegHeart />} active={ location.pathname === "/purecomponent"} ><Link to="/purecomponent">PureComponent</Link></MenuItem>
               <MenuItem icon={<FaRegHeart />} active={ location.pathname === "/usememo"} ><Link to="/usememo">UseMemo</Link></MenuItem>
+              <MenuItem icon={<FaRegHeart />} active={ location.pathname === "/getapi"} ><Link to="/getapi">Get Api</Link></MenuItem>
              
             </Menu>
           </SidebarContent>
           <SidebarFooter>
             <Menu iconShape="square">
-              <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
+              <MenuItem icon={<FiLogOut />} onClick={logout}>Logout</MenuItem>
             </Menu>
           </SidebarFooter>
         </ProSidebar>

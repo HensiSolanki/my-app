@@ -62,11 +62,13 @@
 	position: relative;
 	z-index: 0;
 	margin: 4rem auto 0;
-  padding: 5rem 4rem 0 4rem;
+    padding: 5rem 4rem 0 4rem;
 	width: 100%;
 	max-width: 525px;
 	min-height: 680px;
-	background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/283591/login-background.jpg);
+	/* background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/283591/login-background.jpg); */
+	background-image: url(https://images.unsplash.com/photo-1517191434949-5e90cd67d2b6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80);
+
 	box-shadow: 0 50px 70px -20px rgba(0, 0, 0, 0.85);
 }
 
@@ -79,8 +81,11 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-image: radial-gradient(ellipse at left bottom, rgba(22, 24, 47, 1) 0%,rgba(38, 20, 72, .9) 59%, rgba(17, 27, 75, .9) 100%);
+	/* background-image: radial-gradient(ellipse at left bottom, rgba(22, 24, 47, 1) 0%,rgba(38, 20, 72, .9) 59%, rgba(17, 27, 75, .9) 100%); */
+	background-image: radial-gradient(ellipse at left bottom, rgba(217,205,204, 1) 0%,rgba(217,205,204, .3) 0%, rgba(217,205,204, .3) 0%);
+	/* background-image:rgb(194,187,186); */
 	box-shadow: 0 -20px 150px -20px rgba(0, 0, 0, 0.5);
+
 }
 
 .form-login {
@@ -153,9 +158,9 @@
 
 .login__label,
 .login__label--checkbox {
-	color: rgba(255, 255, 255, 0.5);
+	color: white;
 	text-transform: uppercase;
-	font-size: .75rem;
+	font-size: .90rem;
 	margin-bottom: 1rem;
 }
 
@@ -214,14 +219,14 @@ a{
 	border-radius: 2rem;
 	display: block;
 	width: 100%;
-	background-color: rgba(17, 97, 237, .75);
+	background-color: rgba(17, 222, 237, 0.75);
 	border: none;
 	cursor: pointer;
 }
 
-.login__submit:hover {
+/* .login__submit:hover {
 	background-color: rgba(17, 97, 237, 1);
-}
+} */
 
 .login__forgot {
 	display: block;
