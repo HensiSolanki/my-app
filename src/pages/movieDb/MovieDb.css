@@ -1,0 +1,39 @@
+.mainMovies {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+  }
+  
+  .card {
+    background-color: rgba(241, 240, 142, 0.8);
+    box-shadow: 0 4px 8px 0 rgba(70, 16, 16, 0.2);
+    width: 350px;
+    min-height: 290px;
+    margin: 0px 20px 20px 0;
+    cursor: pointer;
+    color:rgb(10, 29, 46);
+    border-radius: 25px;
+    transition: 0.8s;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(7, 22, 226, 0.2);
+  }
+  
+  /* .container {
+    background-color: rgba(37, 8, 8, 0.8);
+    padding: 20px;
+    font-size: 20px;
+   color:aliceblue;
+    text-align: center;
+    padding: 2px 16px;
+    border-radius: 25px;
+
+  } */
+  
+  .imageName {
+    width: 306px;
+    height: 219px;
+    padding-top: 23px;
+  }

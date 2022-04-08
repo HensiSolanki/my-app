@@ -18,6 +18,7 @@ import Layout from './component/Layout';
 import { PrivateRoute } from './utils/PrivateRoute';
 import Welcome from './component/Welcome';
 import GetApi from './pages/GetApi';
+import MovieDb from './pages/movieDb/MovieDb';
 
 export default function Routers() {
   const [name, setName] = useState("Hensi");
@@ -49,6 +50,7 @@ export default function Routers() {
               <PrivateRoute exact path="/purecomponent" component={PureComponent}/>
               <PrivateRoute exact path="/usememo" component={UseMemo}/>
               <PrivateRoute exact path="/getapi" component={GetApi}/>
+              <Route exact path="/moviedb" component={MovieDb}/>
 
               <Route path='*' exact={true} />
             </Switch>
