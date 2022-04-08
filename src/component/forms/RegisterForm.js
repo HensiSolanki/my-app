@@ -69,7 +69,6 @@ const RegisterForm = () => {
         errors.contact = "";
 
         //password validation
-        const cond1 = "/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)";
         const password = userRegistration.password;
         if (!password) {
             errors.password = "password is required";
