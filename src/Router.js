@@ -1,4 +1,4 @@
-import React,{Navigate} from 'react';
+import React, { Navigate } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import About1 from './pages/About1';
 import UseStateArray from './pages/UseStateArray';
@@ -19,6 +19,7 @@ import { PrivateRoute } from './utils/PrivateRoute';
 import Welcome from './component/Welcome';
 import GetApi from './pages/GetApi';
 import MovieDb from './pages/movieDb/MovieDb';
+import PageNotFound from './pages/PageNotFound';
 
 export default function Routers() {
   const [name, setName] = useState("Hensi");
@@ -27,7 +28,7 @@ export default function Routers() {
 
     <BrowserRouter>
       <Switch>
-      <Route exact path="/">
+        <Route exact path="/">
           <Welcome />
         </Route>
         <Route exact path="/register">
@@ -36,25 +37,25 @@ export default function Routers() {
         <Route exact path="/login">
           <LoginForm />
         </Route>
-          <Layout>
-            <Switch>
-            <PrivateRoute path="/about1" exact component={About1}/>
-              {/* <PrivateRoute exact path="/lifecycle"  component={<LifeCycle name={name} click={() => setName("Hensi Solanki")} />}/> */}
-              <PrivateRoute exact path="/parent" component={Parent}/>
-              <PrivateRoute exact path="/about" component={About}/>
-              <PrivateRoute exact path="/useStateArray" component={UseStateArray}/>
-              <PrivateRoute exact path="/useEffect" component={UseEffect}/>
-              <PrivateRoute exact path="/useStateObject" component={UseStateObject}/>
-              <PrivateRoute exact path="/clone" component={Clone}/>
-              <PrivateRoute exact path="/map" component={Map}/> 
-              <PrivateRoute exact path="/purecomponent" component={PureComponent}/>
-              <PrivateRoute exact path="/usememo" component={UseMemo}/>
-              <PrivateRoute exact path="/getapi" component={GetApi}/>
-              <Route exact path="/moviedb" component={MovieDb}/>
+        <Layout>
+          <Switch>
+            <PrivateRoute path="/about1" exact component={About1} />
+            {/* <PrivateRoute exact path="/lifecycle"  component={<LifeCycle name={name} click={() => setName("Hensi Solanki")} />}/> */}
+            <PrivateRoute exact path="/parent" component={Parent} />
+            <PrivateRoute exact path="/about" component={About} />
+            <PrivateRoute exact path="/useStateArray" component={UseStateArray} />
+            <PrivateRoute exact path="/useEffect" component={UseEffect} />
+            <PrivateRoute exact path="/useStateObject" component={UseStateObject} />
+            <PrivateRoute exact path="/clone" component={Clone} />
+            <PrivateRoute exact path="/map" component={Map} />
+            <PrivateRoute exact path="/purecomponent" component={PureComponent} />
+            <PrivateRoute exact path="/usememo" component={UseMemo} />
+            <PrivateRoute exact path="/getapi" component={GetApi} />
+            <Route exact path="/moviedb" component={MovieDb} />
+            <Route exact={false} path='*'><PageNotFound /></Route>
+          </Switch>
+        </Layout>
 
-              <Route path='*' exact={true} />
-            </Switch>
-          </Layout>
       </Switch>
     </BrowserRouter>
 
